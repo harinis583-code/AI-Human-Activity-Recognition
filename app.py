@@ -12,6 +12,7 @@ st.title("AI Human Activity Recognition")
 
 st.write("Upload a CCTV video to predict human activity.")
 
+
 video = st.file_uploader(
     "Choose a video",
     type=["mp4"]
@@ -60,7 +61,10 @@ if video is not None:
             model = load_model(MODEL_PATH)
 
             # Prediction
-            prediction = model.predict(x, verbose=0)
+            prediction = model.predict(
+                x,
+                verbose=0
+            )
 
             class_id = np.argmax(prediction)
 
@@ -75,3 +79,4 @@ if video is not None:
             st.error(
                 "Not enough frames in the video."
             )
+            
